@@ -7,23 +7,18 @@ const NAV_LINKS = ["About", "Skills", "Projects", "Experience", "Contact"];
 const SKILLS = [
   { name: "React", img: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/react/react-original.svg", cat: "Frontend", color: "#61dafb" },
   { name: "JavaScript", img: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/javascript/javascript-original.svg", cat: "Frontend", color: "#f7df1e" },
-  { name: "TypeScript", img: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/typescript/typescript-original.svg", cat: "Frontend", color: "#3178c6" },
   { name: "Tailwind CSS", img: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/tailwindcss/tailwindcss-original.svg", cat: "Frontend", color: "#06b6d4" },
   { name: "PHP", img: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/php/php-original.svg", cat: "Backend", color: "#8892be" },
   { name: "Node.js", img: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/nodejs/nodejs-original.svg", cat: "Backend", color: "#68a063" },
   { name: "MySQL", img: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/mysql/mysql-original.svg", cat: "Backend", color: "#00758f" },
-  { name: "Git", img: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/git/git-original.svg", cat: "DevOps", color: "#f05032" },
-  { name: "Docker", img: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/docker/docker-original.svg", cat: "DevOps", color: "#2496ed" },
-  { name: "Linux", img: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/linux/linux-original.svg", cat: "DevOps", color: "#fcc624" },
   { name: "Figma", img: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/figma/figma-original.svg", cat: "Design", color: "#a259ff" },
-  { name: "PostgreSQL", img: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/postgresql/postgresql-original.svg", cat: "Backend", color: "#336791" },
 ];
 
 const PROJECTS = [
   {
     title: "Tonella Dashboard",
     desc: "Sistem monitoring toner & tinta printer berbasis web real-time dengan laporan PDF otomatis dan visualisasi data.",
-    tags: ["PHP", "CodeIgniter 3", "MySQL", "Chart.js"],
+    tags: ["PHP", "CodeIgniter 3", "MySQL", "Tailwind CSS"],
     color: "#00ff88",
     icon: "◉",
     year: "2024",
@@ -50,36 +45,14 @@ const PROJECTS = [
     liveUrl: '#',
     githubUrl: '#',
   },
-  {
-    title: "Invoice Generator Pro",
-    desc: "Sistem pembuatan invoice & laporan keuangan dengan template PDF profesional, multi-currency, dan export Excel.",
-    tags: ["PHP", "TCPDF", "Bootstrap", "jQuery"],
-    color: "#06b6d4",
-    icon: "◇",
-    year: "2023",
-    liveUrl: '#',
-    githubUrl: '#',
-  },
 ];
 
 const EXPERIENCE = [
   {
     role: "Web Developer Intern",
-    company: "Angkasa Pura II",
-    period: "2024 — Sekarang",
-    desc: "Mengembangkan sistem monitoring toner, platform complaint management, dan tools laporan internal berbasis web.",
-  },
-  {
-    role: "Fullstack Developer",
-    company: "Freelance",
-    period: "2022 — 2024",
-    desc: "Membangun berbagai web application untuk UMKM dan startup lokal menggunakan PHP, CodeIgniter, dan React.",
-  },
-  {
-    role: "Mahasiswa Computer Science",
-    company: "Universitas",
-    period: "2021 — Sekarang",
-    desc: "Fokus pada distributed systems, database management, dan web development. Aktif di berbagai proyek akademik.",
+    company: "PT. Angkasa Pura Indonesia Bandar Udara Soekarno-Hatta",
+    period: "September - November 2025",
+    desc: "Terlibat dalam merancang dan mengembangkan aplikasi web manajemen printer/toner dari konsep hingga deployment menggunakan Codelgniter 3,PHP 7+,MySQL dan Tailwind.",
   },
 ];
 
@@ -215,7 +188,6 @@ export default function App() {
     "Full Stack Developer",
     "UI/UX Enthusiast",
     "Problem Solver",
-    "Open Source Lover",
   ]);
   const [menuOpen, setMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
@@ -268,7 +240,7 @@ export default function App() {
           </div>
           <h1 className="hero-name">
             Halo, saya<br />
-            <span className="name-gradient">Varian Dev</span>
+            <span className="name-gradient">Varian Armi</span>
           </h1>
           <div className="hero-typed">
             <span className="typed-prefix">$ </span>
