@@ -35,16 +35,6 @@ const PROJECTS = [
     liveUrl: 'https://armi88.github.io/belajar-budaya-Indonesia/',
     githubUrl: 'https://github.com/Armi88/belajar-budaya-Indonesia',
   },
-  {
-    title: "Distributed DB Manager",
-    desc: "Aplikasi manajemen basis data terdistribusi dengan dukungan CORBA, replication, dan monitoring performa node.",
-    tags: ["Java", "CORBA", "MySQL", "JavaFX"],
-    color: "#f59e0b",
-    icon: "◆",
-    year: "2023",
-    liveUrl: '#',
-    githubUrl: '#',
-  },
 ];
 
 const EXPERIENCE = [
@@ -52,7 +42,7 @@ const EXPERIENCE = [
     role: "Web Developer Intern",
     company: "PT. Angkasa Pura Indonesia Bandar Udara Soekarno-Hatta",
     period: "September - November 2025",
-    desc: "Terlibat dalam merancang dan mengembangkan aplikasi web manajemen printer/toner dari konsep hingga deployment menggunakan Codelgniter 3,PHP 7+,MySQL dan Tailwind.",
+    desc: "Terlibat dalam merancang dan mengembangkan aplikasi web manajemen printer/toner dari konsep hingga deployment menggunakan CodeIgniter 3, PHP 7+, MySQL, dan Tailwind CSS.",
   },
 ];
 
@@ -267,7 +257,7 @@ export default function App() {
               <span className="window-title">portfolio.js</span>
             </div>
             <pre className="code-body">{`const developer = {
-  name: "Varian Dev",
+  name: "Varian Armi",
   location: "Jakarta, ID 🇮🇩",
   skills: [
     "React", "PHP",
@@ -294,7 +284,7 @@ export default developer;`}</pre>
       {/* About */}
       <section className="section" id="about">
         <div className="section-inner">
-          <SectionLabel title="Tentang Saya" />
+          <SectionLabel label="01" title="Tentang Saya" />
           <div className="about-grid">
             <div className="about-photo">
               <div className="photo-frame">
@@ -307,7 +297,7 @@ export default developer;`}</pre>
                 {[
                   { name: "GitHub", url: "https://github.com/Armi88/" },
                   { name: "LinkedIn", url: "https://www.linkedin.com/in/varian-armi-eka-saputro-b3b827243//" },
-                  { name: "Email", url: "mailto:hello@email.com" }
+                  { name: "Email", url: "varianarmi78@gmail.com" }
                 ].map((s) => (
                   <a key={s.name} href={s.url} target="_blank" rel="noopener noreferrer" className="social-chip">
                     {s.name}
@@ -341,7 +331,7 @@ export default developer;`}</pre>
       {/* Skills */}
       <section className="section section-alt" id="skills">
         <div className="section-inner">
-          <SectionLabel title="Keahlian" />
+          <SectionLabel label="02" title="Keahlian" />
           <div className="skills-icon-grid">
             {SKILLS.map((s, i) => (
               <SkillIcon key={s.name} {...s} delay={i * 60} />
@@ -353,7 +343,7 @@ export default developer;`}</pre>
       {/* Projects */}
       <section className="section" id="projects">
         <div className="section-inner">
-          <SectionLabel title="Proyek Pilihan" />
+          <SectionLabel label="03" title="Proyek Pilihan" />
           <div className="projects-grid">
             {PROJECTS.map((p, i) => (
               <ProjectCard key={p.title} project={p} index={i} />
@@ -365,7 +355,7 @@ export default developer;`}</pre>
       {/* Experience */}
       <section className="section section-alt" id="experience">
         <div className="section-inner">
-          <SectionLabel title="Pengalaman" />
+          <SectionLabel label="04" title="Pengalaman" />
           <div className="timeline">
             {EXPERIENCE.map((e, i) => (
               <div key={i} className="timeline-item">
@@ -401,7 +391,7 @@ export default developer;`}</pre>
               </p>
               <div className="contact-links">
                 {[
-                  { icon: "✉", label: "hello@variandev.id" },
+                  { icon: "✉", label: "varianarmi78@gmail.com" },
                   { icon: "📍", label: "Jakarta, Indonesia" },
                   { icon: "🕐", label: "WIB (UTC+7)" },
                 ].map((c) => (
@@ -442,7 +432,7 @@ export default developer;`}</pre>
           <p className="footer-text">
             Dibuat dengan ❤️ menggunakan React + Vite · {new Date().getFullYear()}
           </p>
-          <p className="footer-sub">Designed & Developed by Varian Dev</p>
+          <p className="footer-sub">Designed & Developed by Varian Armi</p>
         </div>
       </footer>
     </div>
