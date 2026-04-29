@@ -181,6 +181,14 @@ export default function App() {
   ]);
   const [menuOpen, setMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const [formData, setFormData] = useState({ name: "", phone: "", message: "" });
+
+  const WA_NUMBER = "6281234567890"; // ← Ganti dengan nomor WhatsApp Anda (tanpa +)
+
+  const handleSendWA = () => {
+    const text = `Halo, saya ${formData.name}!\nNo. HP: ${formData.phone}\n\nPesan:\n${formData.message}`;
+    window.open(`https://wa.me/${WA_NUMBER}?text=${encodeURIComponent(text)}`, "_blank");
+  };
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 60);
@@ -394,7 +402,7 @@ export default developer;`}</pre>
               </p>
               <div className="contact-links">
                 {[
-                  { icon: "✉", label: "varianarmi78@gmail.com" },
+                  { icon: "📱", label: "+62 812-XXXX-XXXX" },
                   { icon: "📍", label: "Kabupaten Bogor, BojongGede" },
                   { icon: "🕐", label: "WIB (UTC+7)" },
                 ].map((c) => (
@@ -408,18 +416,40 @@ export default developer;`}</pre>
             <form className="contact-form" onSubmit={(e) => e.preventDefault()}>
               <div className="form-group">
                 <label className="form-label">Nama</label>
-                <input className="form-input" type="text" placeholder="John Doe" />
+                <input
+                  className="form-input"
+                  type="text"
+                  placeholder="John Doe"
+                  value={formData.name}
+                  onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+                />
               </div>
               <div className="form-group">
-                <label className="form-label">Email</label>
-                <input className="form-input" type="email" placeholder="john@example.com" />
+                <label className="form-label">No. HP / WhatsApp</label>
+                <input
+                  className="form-input"
+                  type="tel"
+                  placeholder="+62 812-XXXX-XXXX"
+                  value={formData.phone}
+                  onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
+                />
               </div>
               <div className="form-group">
                 <label className="form-label">Pesan</label>
-                <textarea className="form-input form-textarea" rows={5} placeholder="Halo, saya ingin berkolaborasi..." />
+                <textarea
+                  className="form-input form-textarea"
+                  rows={5}
+                  placeholder="Halo, saya ingin berkolaborasi..."
+                  value={formData.message}
+                  onChange={(e) => setFormData({ ...formData, message: e.target.value })}
+                />
               </div>
-              <button type="submit" className="btn-primary btn-full">
-                Kirim Pesan →
+              <button
+                type="button"
+                className="btn-primary btn-full"
+                onClick={handleSendWA}
+              >
+                💬 Kirim via WhatsApp →
               </button>
             </form>
           </div>
