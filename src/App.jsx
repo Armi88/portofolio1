@@ -16,8 +16,8 @@ const SKILLS = [
 
 const PROJECTS = [
   {
-    title: "Tonella Dashboard",
-    desc: "Sistem monitoring toner & tinta printer berbasis web real-time dengan laporan PDF otomatis dan visualisasi data.",
+    title: "Tonella - Printer Toner & Ink Monitoring System",
+    desc: "saya berperan dalam kegiatan perencanaan dan pengembangan aplikasi internal yang digunakan untuk mendukung proses operasional, khususnya terkait pengelolaan laporan penggantian toner dan tagihan printer. Aplikasi ini dibangun menggunakan CodeIgniter 3 sebagai framework backend, PHP sebagai bahasa pemrograman, MySQL sebagai database, dan Tailwind CSS untuk styling antarmuka pengguna. Dalam proyek ini, saya terlibat dalam merancang struktur database, mengimplementasikan fitur-fitur utama seperti manajemen laporan penggantian toner, serta memastikan aplikasi berjalan dengan baik dan memenuhi kebutuhan pengguna internal perusahaan.",
     tags: ["PHP", "CodeIgniter 3", "MySQL", "Tailwind CSS"],
     color: "#00ff88",
     icon: "◉",
@@ -42,7 +42,7 @@ const EXPERIENCE = [
     role: "Web Developer Intern",
     company: "PT. Angkasa Pura Indonesia Bandar Udara Soekarno-Hatta",
     period: "September - November 2025",
-    desc: "Terlibat dalam merancang dan mengembangkan aplikasi web manajemen printer/toner dari konsep hingga deployment menggunakan CodeIgniter 3, PHP 7+, MySQL, dan Tailwind CSS.",
+    desc: "Selama magang, saya terlibat dalam pengembangan dan membangun sistem berbasis web (TONELLA), mulai dari analisis kebutuhan, perancangan database, hingga implementasi fitur dan UI/UX, serta berkomunikasi langsung dengan internal operasional kantor.",
   },
 ];
 
@@ -176,7 +176,7 @@ function ProjectCard({ project, index }) {
 export default function App() {
   const typed = useTypingEffect([
     "Full Stack Developer",
-    "UI/UX Enthusiast",
+    "UI/UX Designer",
     "Problem Solver",
   ]);
   const [menuOpen, setMenuOpen] = useState(false);
@@ -238,8 +238,9 @@ export default function App() {
             <span className="cursor">█</span>
           </div>
           <p className="hero-desc">
-            Membangun pengalaman digital yang elegan dan berperforma tinggi.
-            Spesialis web development dengan passion pada clean code dan modern UI.
+          Frontend Developer (Junior) yang berfokus pada pembangunan antarmuka modern, responsif, dan berperforma tinggi. 
+          Memiliki pengalaman magang sebagai Full Stack Developer, dengan pemahaman dalam pengembangan aplikasi web dari sisi frontend hingga backend 
+          untuk menciptakan pengalaman pengguna yang optimal
           </p>
           <div className="hero-actions">
             <button className="btn-primary" onClick={() => scrollTo("Projects")}>
@@ -258,12 +259,12 @@ export default function App() {
             </div>
             <pre className="code-body">{`const developer = {
   name: "Varian Armi",
-  location: "Jakarta, ID 🇮🇩",
+  location: "Kabupaten Bogor, BojongGede",
   skills: [
     "React", "PHP",
     "Node.js", "MySQL"
   ],
-  passion: "Clean Code",
+  passion: "Frontend Developer (Junior)",
   status: "🟢 Available"
 };
 
@@ -296,7 +297,7 @@ export default developer;`}</pre>
               <div className="about-socials">
                 {[
                   { name: "GitHub", url: "https://github.com/Armi88/" },
-                  { name: "LinkedIn", url: "https://www.linkedin.com/in/varian-armi-eka-saputro-b3b827243//" },
+                  { name: "LinkedIn", url: "https://www.linkedin.com/in/varian-armi-eka-saputro-b3b827243/" },
                   { name: "Email", url: "varianarmi78@gmail.com" }
                 ].map((s) => (
                   <a key={s.name} href={s.url} target="_blank" rel="noopener noreferrer" className="social-chip">
@@ -307,13 +308,15 @@ export default developer;`}</pre>
             </div>
             <div className="about-text">
               <p className="about-lead">
-                Saya adalah <span className="highlight">Full Stack Developer</span> yang bersemangat dalam membangun produk digital yang bermakna.
+                Saya adalah <span className="highlight">Junior Full Stack Developer</span> yang memiliki minat dalam membangun aplikasi web yang fungsional dan mudah digunakan.
               </p>
               <p className="about-body">
-                Dengan pengalaman lebih dari 3 tahun di industri web development, saya telah mengerjakan berbagai proyek mulai dari sistem enterprise hingga aplikasi startup. Saya percaya bahwa kode yang baik adalah kode yang mudah dibaca, dipelihara, dan diperluas.
+              Saya merupakan mahasiswa aktif semester 8 Program Studi Sistem Informasi di Universitas Gunadarma dengan pengalaman magang sebagai Full Stack Web Developer di PT Angkasa Pura Indonesia. Selama magang, saya terlibat dalam 
+              pengembangan dan membangun sistem berbasis web (TONELLA), mulai dari analisis kebutuhan, perancangan database, hingga implementasi fitur dan UI/UX, serta berkomunikasi langsung dengan pengguna.
+              Selain itu, saya juga memiliki pengalaman mengembangkan beberapa proyek mandiri seperti website properti dan e-commerce. Saya terbiasa menggunakan teknologi seperti HTML, CSS, JavaScript, React, PHP, dan CodeIgniter dalam pengembangan aplikasi web.
               </p>
               <p className="about-body">
-                Saat ini fokus pada pengembangan aplikasi web modern menggunakan React, CodeIgniter, dan ekosistem JavaScript. Saya juga aktif belajar tentang distributed systems dan cloud architecture.
+                Saat ini fokus pada pengembangan kemampuan aplikasi web modern menggunakan React, CodeIgniter, dan ekosistem JavaScript. Saya juga aktif belajar tentang distributed systems dan cloud architecture.
               </p>
               <div className="about-tools">
                 <span className="tools-label">Tools favorit:</span>
@@ -392,7 +395,7 @@ export default developer;`}</pre>
               <div className="contact-links">
                 {[
                   { icon: "✉", label: "varianarmi78@gmail.com" },
-                  { icon: "📍", label: "Jakarta, Indonesia" },
+                  { icon: "📍", label: "Kabupaten Bogor, BojongGede" },
                   { icon: "🕐", label: "WIB (UTC+7)" },
                 ].map((c) => (
                   <div key={c.label} className="contact-item">
