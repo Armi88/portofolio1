@@ -187,14 +187,7 @@ export default function App() {
 
   const handleSendWA = () => {
     const text = `Halo, saya ${formData.name}!\nNo. HP: ${formData.phone}\n\nPesan:\n${formData.message}`;
-    const url = `https://api.whatsapp.com/send?phone=${WA_NUMBER}&text=${encodeURIComponent(text)}`;
-    const a = document.createElement("a");
-    a.href = url;
-    a.target = "_blank";
-    a.rel = "noopener noreferrer";
-    document.body.appendChild(a);
-    a.click();
-    document.body.removeChild(a);
+    window.open(`https://wa.me/${WA_NUMBER}?text=${encodeURIComponent(text)}`, "_blank");
   };
 
   useEffect(() => {
@@ -253,9 +246,9 @@ export default function App() {
             <span className="cursor">█</span>
           </div>
           <p className="hero-desc">
-          Frontend Developer (Junior) yang berfokus pada pembangunan antarmuka modern, responsif, dan berperforma tinggi. 
-          Memiliki pengalaman magang sebagai Full Stack Developer, dengan pemahaman dalam pengembangan aplikasi web dari sisi frontend hingga backend 
-          untuk menciptakan pengalaman pengguna yang optimal
+            Frontend Developer (Junior) yang berfokus pada pembangunan antarmuka modern, responsif, dan berperforma tinggi.
+            Memiliki pengalaman magang sebagai Full Stack Developer, dengan pemahaman dalam pengembangan aplikasi web dari sisi frontend hingga backend
+            untuk menciptakan pengalaman pengguna yang optimal
           </p>
           <div className="hero-actions">
             <button className="btn-primary" onClick={() => scrollTo("Projects")}>
@@ -300,7 +293,7 @@ export default developer;`}</pre>
       {/* About */}
       <section className="section" id="about">
         <div className="section-inner">
-          <SectionLabel label="01" title="Tentang Saya" />
+          <SectionLabel label="" title="Tentang Saya" />
           <div className="about-grid">
             <div className="about-photo">
               <div className="photo-frame">
@@ -326,9 +319,9 @@ export default developer;`}</pre>
                 Saya adalah <span className="highlight">Junior Full Stack Developer</span> yang memiliki minat dalam membangun aplikasi web yang fungsional dan mudah digunakan.
               </p>
               <p className="about-body">
-              Saya merupakan mahasiswa aktif semester 8 Program Studi Sistem Informasi di Universitas Gunadarma dengan pengalaman magang sebagai Full Stack Web Developer di PT Angkasa Pura Indonesia. Selama magang, saya terlibat dalam 
-              pengembangan dan membangun sistem berbasis web (TONELLA), mulai dari analisis kebutuhan, perancangan database, hingga implementasi fitur dan UI/UX, serta berkomunikasi langsung dengan pengguna.
-              Selain itu, saya juga memiliki pengalaman mengembangkan beberapa proyek mandiri seperti website properti dan e-commerce. Saya terbiasa menggunakan teknologi seperti HTML, CSS, JavaScript, React, PHP, dan CodeIgniter dalam pengembangan aplikasi web.
+                Saya merupakan mahasiswa aktif semester 8 Program Studi Sistem Informasi di Universitas Gunadarma dengan pengalaman magang sebagai Full Stack Web Developer di PT Angkasa Pura Indonesia. Selama magang, saya terlibat dalam
+                pengembangan dan membangun sistem berbasis web (TONELLA), mulai dari analisis kebutuhan, perancangan database, hingga implementasi fitur dan UI/UX, serta berkomunikasi langsung dengan pengguna.
+                Selain itu, saya juga memiliki pengalaman mengembangkan beberapa proyek mandiri seperti website properti dan e-commerce. Saya terbiasa menggunakan teknologi seperti HTML, CSS, JavaScript, React, PHP, dan CodeIgniter dalam pengembangan aplikasi web.
               </p>
               <p className="about-body">
                 Saat ini fokus pada pengembangan kemampuan aplikasi web modern menggunakan React, CodeIgniter, dan ekosistem JavaScript. Saya juga aktif belajar tentang distributed systems dan cloud architecture.
@@ -349,7 +342,7 @@ export default developer;`}</pre>
       {/* Skills */}
       <section className="section section-alt" id="skills">
         <div className="section-inner">
-          <SectionLabel label="02" title="Keahlian" />
+          <SectionLabel label="" title="Keahlian" />
           <div className="skills-icon-grid">
             {SKILLS.map((s, i) => (
               <SkillIcon key={s.name} {...s} delay={i * 60} />
@@ -361,7 +354,7 @@ export default developer;`}</pre>
       {/* Projects */}
       <section className="section" id="projects">
         <div className="section-inner">
-          <SectionLabel label="03" title="Proyek Pilihan" />
+          <SectionLabel label="" title="Proyek Pilihan" />
           <div className="projects-grid">
             {PROJECTS.map((p, i) => (
               <ProjectCard key={p.title} project={p} index={i} />
@@ -373,7 +366,7 @@ export default developer;`}</pre>
       {/* Experience */}
       <section className="section section-alt" id="experience">
         <div className="section-inner">
-          <SectionLabel label="04" title="Pengalaman" />
+          <SectionLabel label="" title="Pengalaman" />
           <div className="timeline">
             {EXPERIENCE.map((e, i) => (
               <div key={i} className="timeline-item">
@@ -397,7 +390,7 @@ export default developer;`}</pre>
       {/* Contact */}
       <section className="section" id="contact">
         <div className="section-inner contact-inner">
-          <SectionLabel label="05" title="Hubungi Saya" />
+          <SectionLabel label="" title="Hubungi Saya" />
           <div className="contact-grid">
             <div className="contact-info">
               <h2 className="contact-headline">
