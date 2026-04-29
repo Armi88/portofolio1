@@ -183,7 +183,7 @@ export default function App() {
   const [scrolled, setScrolled] = useState(false);
   const [formData, setFormData] = useState({ name: "", phone: "", message: "" });
 
-  const WA_NUMBER = "6281234567890"; // ← Ganti dengan nomor WhatsApp Anda (tanpa +)
+  const WA_NUMBER = "6282190215227"; // Nomor WhatsApp Varian Armi
 
   const handleSendWA = () => {
     const text = `Halo, saya ${formData.name}!\nNo. HP: ${formData.phone}\n\nPesan:\n${formData.message}`;
@@ -402,7 +402,7 @@ export default developer;`}</pre>
               </p>
               <div className="contact-links">
                 {[
-                  { icon: "📱", label: "+62 812-XXXX-XXXX" },
+                  { icon: "📱", label: "+62 82190215227" },
                   { icon: "📍", label: "Kabupaten Bogor, BojongGede" },
                   { icon: "🕐", label: "WIB (UTC+7)" },
                 ].map((c) => (
