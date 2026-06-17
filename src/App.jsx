@@ -398,7 +398,7 @@ export default developer;`}</pre>
               <div className="about-tools">
                 <span className="tools-label">Tools favorit:</span>
                 <div className="tools-list">
-                  {["VS Code", "Vite", "Figma", "Git", "codeigniter",].map((t) => (
+                  {["VS Code", "Git", "Figma", "Tailwind CSS", "GitHub", "React.js"].map((t) => (
                     <span key={t} className="tool-chip">{t}</span>
                   ))}
                 </div>
