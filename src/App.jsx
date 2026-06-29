@@ -1,8 +1,10 @@
 import { useState, useEffect, useRef } from "react";
 import "./App.css";
 import profileImg from "./assets/WhatsApp Image 2026-04-02 at 11.17.35.jpeg";
+import screenshotTonella from "./assets/Screenshot 2026-04-29 203416.png";
+import projectImg2 from "./assets/WhatsApp Image 2023-11-11 at 22.08.14_56e1df45.jpg";
 
-const NAV_LINKS = ["About", "Skills", "Projects", "Certificates", "Experience", "Contact"];
+const NAV_LINKS = ["About", "Experience", "Skills", "Projects", "Certificates", "Contact"];
 
 const SKILLS = [
   { name: "HTML", img: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/html5/html5-original.svg", cat: "Frontend", color: "#e34f26" },
@@ -11,6 +13,8 @@ const SKILLS = [
   { name: "React", img: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/react/react-original.svg", cat: "Frontend", color: "#61dafb" },
   { name: "JavaScript", img: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/javascript/javascript-original.svg", cat: "Frontend", color: "#f7df1e" },
   { name: "Tailwind CSS", img: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/tailwindcss/tailwindcss-original.svg", cat: "Frontend", color: "#06b6d4" },
+  { name: "Flutter", img: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/flutter/flutter-original.svg", cat: "Mobile", color: "#54c5f8" },
+  { name: "Dart", img: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/dart/dart-original.svg", cat: "Mobile", color: "#00b4ab" },
   { name: "PHP", img: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/php/php-original.svg", cat: "Backend", color: "#8892be" },
   { name: "Node.js", img: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/nodejs/nodejs-original.svg", cat: "Backend", color: "#68a063" },
   { name: "MySQL", img: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/mysql/mysql-original.svg", cat: "Backend", color: "#00758f" },
@@ -21,33 +25,58 @@ const SKILLS = [
 const PROJECTS = [
   {
     title: "Tonella - Printer Toner & Ink Monitoring System",
-    desc: "saya berperan dalam kegiatan perencanaan dan pengembangan aplikasi internal yang digunakan untuk mendukung proses operasional, khususnya terkait pengelolaan laporan penggantian toner dan tagihan printer. Aplikasi ini dibangun menggunakan CodeIgniter 3 sebagai framework backend, PHP sebagai bahasa pemrograman, MySQL sebagai database, dan Tailwind CSS untuk styling antarmuka pengguna. Dalam proyek ini, saya terlibat dalam merancang struktur database, mengimplementasikan fitur-fitur utama seperti manajemen laporan penggantian toner, serta memastikan aplikasi berjalan dengan baik dan memenuhi kebutuhan pengguna internal perusahaan.",
+    desc: "Saya berperan dalam kegiatan perencanaan dan pengembangan aplikasi internal yang digunakan untuk mendukung proses operasional, khususnya terkait pengelolaan laporan penggantian toner dan tagihan printer. Aplikasi ini dibangun menggunakan CodeIgniter 3 sebagai framework backend, PHP sebagai bahasa pemrograman, MySQL sebagai database, dan Tailwind CSS untuk styling antarmuka pengguna. Dalam proyek ini, saya terlibat dalam merancang struktur database, mengimplementasikan fitur-fitur utama seperti manajemen laporan penggantian toner, serta memastikan aplikasi berjalan dengan baik dan memenuhi kebutuhan pengguna internal perusahaan.",
     tags: ["PHP", "CodeIgniter 3", "MySQL", "Tailwind CSS"],
     color: "#00ff88",
     icon: "◉",
     year: "2025",
     liveUrl: '#',
     githubUrl: '#',
+    image: screenshotTonella,
   },
   {
     title: "Belajar Budaya Indonesia",
-    desc: "Platform ini dirancang untuk mempermudah proses edukasi dengan memperkenalkan kekayaan budaya dari 34 provinsi di Indonesia. Melalui platform ini, pengguna dapat mengenal berbagai unsur budaya seperti rumah adat, pakaian tradisional, alat musik khas, makanan daerah, serta fakta-fakta menarik dari setiap provinsi.Dengan penyajian informasi yang lengkap, terstruktur, dan mudah diakses, platform ini diharapkan dapat meningkatkan pemahaman sekaligus menumbuhkan apresiasi masyarakat terhadap keberagaman dan kekayaan budaya Indonesia.",
+    desc: "Platform ini dirancang untuk mempermudah proses edukasi dengan memperkenalkan kekayaan budaya dari 34 provinsi di Indonesia. Melalui platform ini, pengguna dapat mengenal berbagai unsur budaya seperti rumah adat, pakaian tradisional, alat musik khas, makanan daerah, serta fakta-fakta menarik dari setiap provinsi. Dengan penyajian informasi yang lengkap, terstruktur, dan mudah diakses, platform ini diharapkan dapat meningkatkan pemahaman sekaligus menumbuhkan apresiasi masyarakat terhadap keberagaman dan kekayaan budaya Indonesia.",
     tags: ["Html", "Css", "JavaScript"],
     color: "#7c3aed",
     icon: "◉",
     year: "2025",
     liveUrl: 'https://armi88.github.io/belajar-budaya-Indonesia/',
     githubUrl: 'https://github.com/Armi88/belajar-budaya-Indonesia',
+    image: projectImg2,
   },
   {
     title: "Rumah Impian",
-    desc: "Platform ini dirancang untuk jual rumah yang memudahkan pengguna dalam mencari dan menemukan rumah impian mereka. Dengan fitur pencarian yang canggih, pengguna dapat dengan mudah menyaring hasil berdasarkan lokasi, harga, tipe properti, dan fasilitas yang diinginkan. Selain itu, platform ini juga menyediakan informasi lengkap tentang setiap listing rumah, termasuk foto, deskripsi, dan kontak penjual. Dengan antarmuka yang user-friendly dan responsif, platform ini bertujuan untuk memberikan pengalaman terbaik bagi pengguna dalam proses pencarian rumah.",
+    desc: "Platform ini dirancang untuk jual beli rumah yang memudahkan pengguna dalam mencari dan menemukan rumah impian mereka. Dengan fitur pencarian yang canggih, pengguna dapat dengan mudah menyaring hasil berdasarkan lokasi, harga, tipe properti, dan fasilitas yang diinginkan. Selain itu, platform ini juga menyediakan informasi lengkap tentang setiap listing rumah, termasuk foto, deskripsi, dan kontak penjual. Dengan antarmuka yang user-friendly and responsif, platform ini bertujuan untuk memberikan pengalaman terbaik bagi pengguna dalam proses pencarian rumah.",
     tags: ["Html", "Css", "JavaScript"],
     color: "#67C090",
     icon: "◉",
     year: "2025",
     liveUrl: 'https://rumah-inpian-hlt7xhvoo-armi88s-projects.vercel.app/',
     githubUrl: 'https://github.com/Armi88/Rumah-Inpian',
+    image: projectImg2,
+  },
+  {
+    title: "CariesDetect",
+    desc: "Aplikasi mobile bernama CariesDetect yang dapat digunakan oleh masyarakat umum maupun tenaga kesehatan sebagai alat bantu skrining awal karies gigi melalui smartphone. Pengguna cukup mengarahkan kamera perangkat ke area gigi, dan aplikasi secara otomatis mendeteksi serta mengklasifikasikan tingkat keparahan karies ke dalam tiga kategori, yaitu ringan, sedang, dan berat, sehingga memberikan informasi awal yang berguna sebelum melakukan pemeriksaan lebih lanjut ke dokter gigi.",
+    tags: ["flutter"],
+    color: "#547792",
+    icon: "◉",
+    year: "2026",
+    liveUrl: '#',
+    githubUrl: '#',
+    image: screenshotTonella,
+  },
+  {
+    title: "HematinAja",
+    desc: "Aplikasi mobile bernama HematinAja  untuk mengatur pemasukan dan keluaran uang. agar tidak lupa pada saat membeli sesuatu pada hari ini",
+    tags: ["flutter"],
+    color: "#B8DB80",
+    icon: "◉",
+    year: "2026",
+    liveUrl: '#',
+    githubUrl: '#',
+    image: screenshotTonella,
   },
 ];
 
@@ -151,57 +180,116 @@ function SkillIcon({ name, icon, img, cat, color, textIcon, delay }) {
   );
 }
 
+function ProjectPopup({ project, onClose }) {
+  useEffect(() => {
+    const handleKey = (e) => { if (e.key === 'Escape') onClose(); };
+    document.addEventListener('keydown', handleKey);
+    document.body.style.overflow = 'hidden';
+    return () => {
+      document.removeEventListener('keydown', handleKey);
+      document.body.style.overflow = '';
+    };
+  }, [onClose]);
+
+  return (
+    <div className="popup-backdrop" onClick={onClose}>
+      <div className="popup-modal" onClick={(e) => e.stopPropagation()}>
+        <button className="popup-close" onClick={onClose} aria-label="Tutup">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round">
+            <line x1="18" y1="6" x2="6" y2="18" />
+            <line x1="6" y1="6" x2="18" y2="18" />
+          </svg>
+        </button>
+
+        {/* Kiri — Gambar */}
+        <div className="popup-image-side">
+          {project.image ? (
+            <img src={project.image} alt={project.title} className="popup-img" />
+          ) : (
+            <div className="popup-img-placeholder" style={{ background: `linear-gradient(135deg, ${project.color}18, ${project.color}06)`, borderColor: project.color + '33' }}>
+              <span style={{ fontSize: '3.5rem' }}>{project.icon}</span>
+              <span style={{ color: project.color, fontFamily: 'var(--font-mono)', fontSize: '0.75rem', marginTop: '0.5rem', opacity: 0.7 }}>Preview tidak tersedia</span>
+            </div>
+          )}
+          <div className="popup-img-glow" style={{ background: project.color + '14' }} />
+        </div>
+
+        {/* Kanan — Detail */}
+        <div className="popup-info-side">
+          <div className="popup-meta">
+            <span className="popup-year-badge" style={{ color: project.color, borderColor: project.color + '33', background: project.color + '0f' }}>{project.year}</span>
+            <span className="popup-icon-badge" style={{ color: project.color }}>{project.icon}</span>
+          </div>
+          <h2 className="popup-title">{project.title}</h2>
+          <div className="popup-divider" style={{ background: `linear-gradient(90deg, ${project.color}, transparent)` }} />
+          <p className="popup-desc">{project.desc}</p>
+          <div className="popup-tags">
+            {project.tags.map((t) => (
+              <span key={t} className="tag" style={{ borderColor: project.color + '44', color: project.color }}>
+                {t}
+              </span>
+            ))}
+          </div>
+          {/* Links di bawah desc */}
+          <div className="popup-actions">
+            {project.liveUrl && project.liveUrl !== '#' && (
+              <a href={project.liveUrl} className="popup-btn" style={{ background: project.color, color: '#06060f' }} target="_blank" rel="noopener noreferrer">
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+                Live Demo
+              </a>
+            )}
+            {project.githubUrl && project.githubUrl !== '#' && (
+              <a href={project.githubUrl} className="popup-btn popup-btn-ghost" target="_blank" rel="noopener noreferrer">
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/></svg>
+                GitHub
+              </a>
+            )}
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}
+
 function ProjectCard({ project, index }) {
   const [ref, inView] = useInView();
   const [hovered, setHovered] = useState(false);
+  const [popupOpen, setPopupOpen] = useState(false);
   return (
-    <div
-      ref={ref}
-      className={`project-card ${inView ? "fade-up" : ""}`}
-      style={{ animationDelay: `${index * 120}ms`, "--accent": project.color }}
-      onMouseEnter={() => setHovered(true)}
-      onMouseLeave={() => setHovered(false)}
-    >
-      <div className="project-top">
-        <span className="project-icon" style={{ color: project.color }}>{project.icon}</span>
-        <span className="project-year">{project.year}</span>
-      </div>
-      <h3 className="project-title">{project.title}</h3>
-      <p className="project-desc">{project.desc}</p>
-      <div className="project-tags">
-        {project.tags.map((t) => (
-          <span key={t} className="tag" style={{ borderColor: project.color + "44", color: project.color }}>
-            {t}
+    <>
+      <div
+        ref={ref}
+        className={`project-card ${inView ? "fade-up" : ""}`}
+        style={{ animationDelay: `${index * 120}ms`, "--accent": project.color, cursor: 'pointer' }}
+        onMouseEnter={() => setHovered(true)}
+        onMouseLeave={() => setHovered(false)}
+        onClick={() => setPopupOpen(true)}
+      >
+        <div className="project-top">
+          <span className="project-icon" style={{ color: project.color }}>{project.icon}</span>
+          <span className="project-year">{project.year}</span>
+        </div>
+        <h3 className="project-title">{project.title}</h3>
+        <p className="project-desc">{project.desc}</p>
+        <div className="project-tags">
+          {project.tags.map((t) => (
+            <span key={t} className="tag" style={{ borderColor: project.color + "44", color: project.color }}>
+              {t}
+            </span>
+          ))}
+        </div>
+        <div className={`project-links-overlay ${hovered ? "overlay-show" : ""}`}>
+          <span className="popup-hint-text" style={{ color: project.color }}>
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" style={{ marginRight: '0.4rem' }}>
+              <circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/>
+              <line x1="11" y1="8" x2="11" y2="14"/><line x1="8" y1="11" x2="14" y2="11"/>
+            </svg>
+            Klik untuk Detail
           </span>
-        ))}
+        </div>
       </div>
-      {/* Hover overlay with links */}
-      <div className={`project-links-overlay ${hovered ? "overlay-show" : ""}`}>
-        {project.liveUrl && (
-          <a
-            href={project.liveUrl}
-            className="project-link-btn"
-            style={{ borderColor: project.color, color: project.color }}
-            target="_blank"
-            rel="noopener noreferrer"
-            onClick={(e) => e.stopPropagation()}
-          >
-            <span>🌐</span> Live Demo
-          </a>
-        )}
-        {project.githubUrl && (
-          <a
-            href={project.githubUrl}
-            className="project-link-btn project-link-github"
-            target="_blank"
-            rel="noopener noreferrer"
-            onClick={(e) => e.stopPropagation()}
-          >
-            <span>⑂</span> GitHub
-          </a>
-        )}
-      </div>
-    </div>
+      {popupOpen && <ProjectPopup project={project} onClose={() => setPopupOpen(false)} />}
+    </>
   );
 }
 
@@ -279,7 +367,7 @@ export default function App() {
       {/* Navbar */}
       <nav className={`navbar ${scrolled ? "navbar-scrolled" : ""}`}>
         <a className="logo" href="#">
-          <span className="logo-icon">⚡</span>
+          <span className="logo-icon"></span>
           <span className="logo-name">Portofolio<span className="logo-dot">.</span></span>
         </a>
         <div className={`nav-links ${menuOpen ? "nav-open" : ""}`}>
@@ -384,13 +472,27 @@ export default developer;`}</pre>
                 {[
                   { name: "GitHub", url: "https://github.com/Armi88/" },
                   { name: "LinkedIn", url: "https://www.linkedin.com/in/varian-armi-eka-saputro-b3b827243/" },
-                  { name: "Email", url: "varianarmi78@gmail.com" }
+                  { name: "Email", url: "mailto:varianarmi78@gmail.com" }
                 ].map((s) => (
                   <a key={s.name} href={s.url} target="_blank" rel="noopener noreferrer" className="social-chip">
                     {s.name}
                   </a>
                 ))}
               </div>
+              <a
+                href="#"
+                className="cv-download-btn"
+                target="_blank"
+                rel="noopener noreferrer"
+                title="Download CV Varian Armi"
+              >
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
+                  <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+                  <polyline points="7 10 12 15 17 10"/>
+                  <line x1="12" y1="15" x2="12" y2="3"/>
+                </svg>
+                Download CV
+              </a>
             </div>
             <div className="about-text">
               <p className="about-lead">
@@ -417,44 +519,8 @@ export default developer;`}</pre>
         </div>
       </section>
 
-      {/* Skills */}
-      <section className="section section-alt" id="skills">
-        <div className="section-inner">
-          <SectionLabel label="" title="Keahlian" />
-          <div className="skills-icon-grid">
-            {SKILLS.map((s, i) => (
-              <SkillIcon key={s.name} {...s} delay={i * 60} />
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Projects */}
-      <section className="section" id="projects">
-        <div className="section-inner">
-          <SectionLabel label="" title="Pengalaman Projek" />
-          <div className="projects-grid">
-            {PROJECTS.map((p, i) => (
-              <ProjectCard key={p.title} project={p} index={i} />
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Certificates */}
-      <section className="section section-alt" id="certificates">
-        <div className="section-inner">
-          <SectionLabel label="" title="Sertifikat" />
-          <div className="projects-grid">
-            {CERTIFICATES.map((c, i) => (
-              <CertificateCard key={c.title} cert={c} index={i} />
-            ))}
-          </div>
-        </div>
-      </section>
-
       {/* Experience */}
-      <section className="section" id="experience">
+      <section className="section section-alt" id="experience">
         <div className="section-inner">
           <SectionLabel label="" title="Pengalaman Magang" />
           <div className="timeline">
@@ -472,6 +538,42 @@ export default developer;`}</pre>
                   <p className="exp-desc">{e.desc}</p>
                 </div>
               </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Skills */}
+      <section className="section" id="skills">
+        <div className="section-inner">
+          <SectionLabel label="" title="Keahlian" />
+          <div className="skills-icon-grid">
+            {SKILLS.map((s, i) => (
+              <SkillIcon key={s.name} {...s} delay={i * 60} />
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Projects */}
+      <section className="section section-alt" id="projects">
+        <div className="section-inner">
+          <SectionLabel label="" title="Pengalaman Projek" />
+          <div className="projects-grid">
+            {PROJECTS.map((p, i) => (
+              <ProjectCard key={p.title} project={p} index={i} />
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Certificates */}
+      <section className="section" id="certificates">
+        <div className="section-inner">
+          <SectionLabel label="" title="Sertifikat" />
+          <div className="projects-grid">
+            {CERTIFICATES.map((c, i) => (
+              <CertificateCard key={c.title} cert={c} index={i} />
             ))}
           </div>
         </div>
@@ -549,13 +651,47 @@ export default developer;`}</pre>
       {/* Footer */}
       <footer className="footer">
         <div className="footer-inner">
-          <span className="logo">
-            <span className="logo-bracket">&lt;</span>Varian<span className="logo-bracket">/&gt;</span>
-          </span>
-          <p className="footer-text">
-            Dibuat dengan ❤️ menggunakan React + Vite · {new Date().getFullYear()}
-          </p>
-          <p className="footer-sub">Designed & Developed by Varian Armi</p>
+          <div className="footer-top">
+            <div className="footer-brand">
+              <span className="footer-logo">
+                <span className="logo-bracket">&lt;</span>Varian<span className="logo-bracket">/&gt;</span>
+              </span>
+              <p className="footer-tagline">Junior Full Stack Developer · Bogor, Indonesia</p>
+              <div className="footer-social-row">
+                <a href="https://github.com/Armi88/" target="_blank" rel="noopener noreferrer" className="footer-icon-btn" title="GitHub">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/></svg>
+                </a>
+                <a href="https://www.linkedin.com/in/varian-armi-eka-saputro-b3b827243/" target="_blank" rel="noopener noreferrer" className="footer-icon-btn" title="LinkedIn">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+                </a>
+                <a href="mailto:varianarmi78@gmail.com" className="footer-icon-btn" title="Email">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><polyline points="22,4 12,13 2,4"/></svg>
+                </a>
+              </div>
+            </div>
+            <div className="footer-links-col">
+              <span className="footer-col-title">Navigasi</span>
+              <ul className="footer-nav-list">
+                {NAV_LINKS.map((l) => (
+                  <li key={l}>
+                    <button className="footer-nav-link" onClick={() => scrollTo(l)}>{l}</button>
+                  </li>
+                ))}
+              </ul>
+            </div>
+            <div className="footer-links-col">
+              <span className="footer-col-title">Kontak</span>
+              <ul className="footer-nav-list">
+                <li><a href="mailto:varianarmi78@gmail.com" className="footer-nav-link">varianarmi78@gmail.com</a></li>
+                <li><a href="https://wa.me/6282190215227" target="_blank" rel="noopener noreferrer" className="footer-nav-link">+62 821-9021-5227</a></li>
+                <li><span className="footer-nav-link" style={{cursor:'default'}}>Kabupaten Bogor, Jawa Barat</span></li>
+              </ul>
+            </div>
+          </div>
+          <div className="footer-bottom">
+            <p className="footer-copy">© {new Date().getFullYear()} Varian Armi Eka Saputro. All rights reserved.</p>
+            <p className="footer-built">Built with <span className="footer-heart">♥</span> using React + Vite</p>
+          </div>
         </div>
       </footer>
     </div>
