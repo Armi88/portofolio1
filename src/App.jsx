@@ -497,7 +497,7 @@ export default developer;`}</pre>
                 ))}
               </div>
               <a
-                href="#"
+                href="https://drive.google.com/file/d/1Jcq4M62vD2cupNL_MKRePw8tamih0LSf/view?usp=sharing"
                 className="cv-download-btn"
                 target="_blank"
                 rel="noopener noreferrer"
