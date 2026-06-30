@@ -1,8 +1,6 @@
 import { useState, useEffect, useRef } from "react";
 import "./App.css";
 import profileImg from "./assets/WhatsApp Image 2026-04-02 at 11.17.35.jpeg";
-import screenshotTonella from "./assets/Screenshot 2026-04-29 203416.png";
-import projectImg2 from "./assets/WhatsApp Image 2023-11-11 at 22.08.14_56e1df45.jpg";
 
 const NAV_LINKS = ["About", "Experience", "Skills", "Projects", "Certificates", "Contact"];
 
@@ -32,7 +30,7 @@ const PROJECTS = [
     year: "2025",
     liveUrl: '#',
     githubUrl: '#',
-    image: screenshotTonella,
+    image: "/src/assets/Screenshot 2026-04-29 203416.png",
   },
   {
     title: "Belajar Budaya Indonesia",
@@ -43,7 +41,7 @@ const PROJECTS = [
     year: "2025",
     liveUrl: 'https://armi88.github.io/belajar-budaya-Indonesia/',
     githubUrl: 'https://github.com/Armi88/belajar-budaya-Indonesia',
-    image: projectImg2,
+    image: "/src/assets/MacBook Air (2022).png",
   },
   {
     title: "Rumah Impian",
@@ -54,7 +52,7 @@ const PROJECTS = [
     year: "2025",
     liveUrl: 'https://rumah-inpian-hlt7xhvoo-armi88s-projects.vercel.app/',
     githubUrl: 'https://github.com/Armi88/Rumah-Inpian',
-    image: projectImg2,
+    image: "/src/assets/Dell XPS.png",
   },
   {
     title: "CariesDetect",
@@ -65,7 +63,7 @@ const PROJECTS = [
     year: "2026",
     liveUrl: '#',
     githubUrl: '#',
-    image: screenshotTonella,
+    image: "/src/assets/iPhone 16 Pro.png",
   },
   {
     title: "HematinAja",
@@ -76,7 +74,7 @@ const PROJECTS = [
     year: "2026",
     liveUrl: '#',
     githubUrl: '#',
-    image: screenshotTonella,
+    image: "/src/assets/Nothing Phone 1.png",
   },
 ];
 
@@ -230,21 +228,31 @@ function ProjectPopup({ project, onClose }) {
               </span>
             ))}
           </div>
-          {/* Links di bawah desc */}
+          {/* Links — langsung dari data PROJECTS */}
           <div className="popup-actions">
-            {project.liveUrl && project.liveUrl !== '#' && (
-              <a href={project.liveUrl} className="popup-btn" style={{ background: project.color, color: '#06060f' }} target="_blank" rel="noopener noreferrer">
-                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
-                Live Demo
-              </a>
-            )}
-            {project.githubUrl && project.githubUrl !== '#' && (
-              <a href={project.githubUrl} className="popup-btn popup-btn-ghost" target="_blank" rel="noopener noreferrer">
-                <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/></svg>
-                GitHub
-              </a>
-            )}
+            <a
+              href={project.liveUrl}
+              className={`popup-btn${project.liveUrl === '#' ? ' popup-btn-disabled-soft' : ''}`}
+              style={project.liveUrl !== '#' ? { background: project.color, color: '#06060f' } : {}}
+              target={project.liveUrl !== '#' ? '_blank' : '_self'}
+              rel="noopener noreferrer"
+              onClick={(e) => { if (project.liveUrl === '#') e.preventDefault(); }}
+            >
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+              Live Demo
+            </a>
+            <a
+              href={project.githubUrl}
+              className={`popup-btn popup-btn-ghost${project.githubUrl === '#' ? ' popup-btn-disabled-soft' : ''}`}
+              target={project.githubUrl !== '#' ? '_blank' : '_self'}
+              rel="noopener noreferrer"
+              onClick={(e) => { if (project.githubUrl === '#') e.preventDefault(); }}
+            >
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/></svg>
+              GitHub
+            </a>
           </div>
+
         </div>
       </div>
     </div>
@@ -338,13 +346,22 @@ export default function App() {
   ]);
   const [menuOpen, setMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
-  const [formData, setFormData] = useState({ name: "", phone: "", message: "" });
+  const [formData, setFormData] = useState({ name: "", email: "", phone: "", message: "" });
 
-  const WA_NUMBER = "6282190215227"; // Nomor WhatsApp Varian Armi
+  const MY_EMAIL = "varianarmi78@gmail.com";
+  const WA_NUMBER = "6282190215227";
 
   const handleSendWA = () => {
-    const text = `Halo, saya ${formData.name}!\nNo. HP: ${formData.phone}\n\nPesan:\n${formData.message}`;
+    const text = `Halo, saya ${formData.name}!\nEmail: ${formData.email}\nNo. HP: ${formData.phone}\n\nPesan:\n${formData.message}`;
     window.open(`https://wa.me/${WA_NUMBER}?text=${encodeURIComponent(text)}`, "_blank");
+  };
+
+  const handleSendEmail = () => {
+    const subject = encodeURIComponent(`Pesan dari ${formData.name} - Portofolio`);
+    const body = encodeURIComponent(
+      `Nama: ${formData.name}\nEmail: ${formData.email}\nNo. HP: ${formData.phone}\n\nPesan:\n${formData.message}`
+    );
+    window.location.href = `mailto:${MY_EMAIL}?subject=${subject}&body=${body}`;
   };
 
   useEffect(() => {
@@ -617,6 +634,16 @@ export default developer;`}</pre>
                 />
               </div>
               <div className="form-group">
+                <label className="form-label">Email</label>
+                <input
+                  className="form-input"
+                  type="email"
+                  placeholder="john@example.com"
+                  value={formData.email}
+                  onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+                />
+              </div>
+              <div className="form-group">
                 <label className="form-label">No. HP / WhatsApp</label>
                 <input
                   className="form-input"
@@ -636,13 +663,23 @@ export default developer;`}</pre>
                   onChange={(e) => setFormData({ ...formData, message: e.target.value })}
                 />
               </div>
-              <button
-                type="button"
-                className="btn-primary btn-full"
-                onClick={handleSendWA}
-              >
-                💬 Kirim via WhatsApp →
-              </button>
+              <div className="form-btn-group">
+                <button
+                  type="button"
+                  className="btn-primary btn-full"
+                  onClick={handleSendWA}
+                >
+                  💬 Kirim via WhatsApp
+                </button>
+                <button
+                  type="button"
+                  className="btn-email btn-full"
+                  onClick={handleSendEmail}
+                >
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><polyline points="22,4 12,13 2,4"/></svg>
+                  Kirim via Email
+                </button>
+              </div>
             </form>
           </div>
         </div>

@@ -418,6 +418,48 @@ body {
   box-shadow: 0 12px 32px rgba(0, 255, 136, 0.3);
 }
 
+/* Email button */
+.btn-email {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  background: transparent;
+  color: var(--accent-cyan);
+  border: 1.5px solid var(--accent-cyan);
+  padding: 0.8rem 2rem;
+  border-radius: var(--radius-md);
+  font-family: var(--font-body);
+  font-size: 0.9375rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: var(--transition);
+  letter-spacing: 0.01em;
+}
+
+.btn-email:hover {
+  background: var(--accent-cyan);
+  color: #06060f;
+  transform: translateY(-2px);
+  box-shadow: 0 12px 32px rgba(6, 182, 212, 0.3);
+}
+
+/* Button group side by side */
+.form-btn-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+/* Disabled popup button (grayed-out, no pointer) */
+.popup-btn-disabled-soft {
+  opacity: 0.35;
+  cursor: not-allowed;
+  pointer-events: none;
+  user-select: none;
+}
+
+
 .btn-ghost {
   background: transparent;
   color: var(--text-primary);
@@ -1126,6 +1168,7 @@ body {
   grid-template-columns: 1fr 1fr;
   width: 100%;
   max-width: 900px;
+  min-height: 480px;
   max-height: 90vh;
   background: var(--bg-card);
   border: 1px solid var(--border-hover);
@@ -1257,11 +1300,15 @@ body {
 }
 
 .popup-desc {
-  font-size: 0.9rem;
+  font-size: 0.875rem;
   color: var(--text-secondary);
-  line-height: 1.8;
-  margin-bottom: 1.5rem;
-  flex: 1;
+  line-height: 1.75;
+  margin-bottom: 1.25rem;
+  max-height: 160px;
+  overflow-y: auto;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(255, 255, 255, 0.1) transparent;
+  padding-right: 0.25rem;
 }
 
 .popup-tags {
@@ -1275,7 +1322,10 @@ body {
   display: flex;
   gap: 0.75rem;
   flex-wrap: wrap;
-  margin-top: auto;
+  margin-top: 1.25rem;
+  padding-top: 1rem;
+  border-top: 1px solid var(--border);
+  flex-shrink: 0;
 }
 
 .popup-btn {
