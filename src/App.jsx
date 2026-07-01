@@ -30,7 +30,7 @@ const PROJECTS = [
     year: "2025",
     liveUrl: '#',
     githubUrl: '#',
-    image: "/src/assets/Screenshot 2026-04-29 203416.png",
+    image: "/images/Screenshot 2026-04-29 203416.png",
   },
   {
     title: "Belajar Budaya Indonesia",
@@ -41,7 +41,7 @@ const PROJECTS = [
     year: "2025",
     liveUrl: 'https://armi88.github.io/belajar-budaya-Indonesia/',
     githubUrl: 'https://github.com/Armi88/belajar-budaya-Indonesia',
-    image: "/src/assets/MacBook Air (2022).png",
+    image: "/images/MacBook Air (2022).png",
   },
   {
     title: "Rumah Impian",
@@ -52,7 +52,7 @@ const PROJECTS = [
     year: "2025",
     liveUrl: 'https://rumah-inpian-hlt7xhvoo-armi88s-projects.vercel.app/',
     githubUrl: 'https://github.com/Armi88/Rumah-Inpian',
-    image: "/src/assets/Dell XPS.png",
+    image: "/images/Dell XPS.png",
   },
   {
     title: "CariesDetect",
@@ -63,7 +63,7 @@ const PROJECTS = [
     year: "2026",
     liveUrl: '#',
     githubUrl: '#',
-    image: "/src/assets/iPhone 16 Pro.png",
+    image: "/images/iPhone 16 Pro.png",
   },
   {
     title: "HematinAja",
@@ -74,7 +74,7 @@ const PROJECTS = [
     year: "2026",
     liveUrl: '#',
     githubUrl: '#',
-    image: "/src/assets/Nothing Phone 1.png",
+    image: "/images/Nothing Phone 1.png",
   },
 ];
 
