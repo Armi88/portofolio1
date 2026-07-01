@@ -384,8 +384,7 @@ export default function App() {
       {/* Navbar */}
       <nav className={`navbar ${scrolled ? "navbar-scrolled" : ""}`}>
         <a className="logo" href="#">
-          <span className="logo-icon"></span>
-          <span className="logo-name">Portofolio<span className="logo-dot">.</span></span>
+          <span className="logo-name">Portofolio</span>
         </a>
         <div className={`nav-links ${menuOpen ? "nav-open" : ""}`}>
           {NAV_LINKS.map((l) => (
