@@ -967,7 +967,7 @@ export default developer;`}</pre>
           <div className="footer-top">
             <div className="footer-brand">
               <span className="footer-logo">
-                <span className="logo-bracket">&lt;</span>Varian<span className="logo-bracket">/&gt;</span>
+                <span className="logo-bracket"></span>Varian Armi Eka Saputro<span className="logo-bracket"></span>
               </span>
               <p className="footer-tagline">Junior Full Stack Developer · Bogor, Indonesia</p>
               <div className="footer-social-row">
