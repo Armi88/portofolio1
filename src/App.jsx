@@ -1,6 +1,10 @@
 import { useState, useEffect, useRef } from "react";
 import "./App.css";
 import profileImg from "./assets/WhatsApp Image 2026-04-02 at 11.17.35.jpeg";
+import { gsap } from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+gsap.registerPlugin(ScrollTrigger);
 
 const NAV_LINKS = ["About", "Experience", "Skills", "Projects", "Certificates", "Contact"];
 
@@ -141,27 +145,11 @@ function useTypingEffect(words, speed = 100) {
   return display;
 }
 
-function useInView(threshold = 0.15) {
-  const ref = useRef(null);
-  const [inView, setInView] = useState(false);
-  useEffect(() => {
-    const obs = new IntersectionObserver(
-      ([e]) => { if (e.isIntersecting) setInView(true); },
-      { threshold }
-    );
-    if (ref.current) obs.observe(ref.current);
-    return () => obs.disconnect();
-  }, []);
-  return [ref, inView];
-}
-
-function SkillIcon({ name, icon, img, cat, color, textIcon, delay }) {
-  const [ref, inView] = useInView();
+function SkillIcon({ name, icon, img, cat, color, textIcon }) {
   return (
     <div
-      ref={ref}
-      className={`skill-icon-item ${inView ? "fade-up" : ""}`}
-      style={{ animationDelay: `${delay}ms`, "--skill-color": color }}
+      className="skill-icon-item"
+      style={{ "--skill-color": color }}
     >
       <div className="skill-icon-badge" style={{ borderColor: color + "44", background: color + "11" }}>
         {img ? (
@@ -259,58 +247,120 @@ function ProjectPopup({ project, onClose }) {
   );
 }
 
-function ProjectCard({ project, index }) {
-  const [ref, inView] = useInView();
+function ProjectCard({ project, onOpen }) {
+  const cardRef = useRef(null);
   const [hovered, setHovered] = useState(false);
-  const [popupOpen, setPopupOpen] = useState(false);
+
+  const handleMouseMove = (e) => {
+    const card = cardRef.current;
+    if (!card) return;
+    const rect = card.getBoundingClientRect();
+    const x = e.clientX - rect.left;
+    const y = e.clientY - rect.top;
+    const centerX = rect.width / 2;
+    const centerY = rect.height / 2;
+    const rotateX = ((y - centerY) / centerY) * -12;
+    const rotateY = ((x - centerX) / centerX) * 12;
+    gsap.to(card, {
+      rotateX,
+      rotateY,
+      transformPerspective: 1000,
+      ease: "power3.out",
+      duration: 0.3
+    });
+  };
+
+  const handleMouseLeave = () => {
+    const card = cardRef.current;
+    if (!card) return;
+    gsap.to(card, {
+      rotateX: 0,
+      rotateY: 0,
+      ease: "power3.out",
+      duration: 0.5
+    });
+    setHovered(false);
+  };
+
   return (
-    <>
-      <div
-        ref={ref}
-        className={`project-card ${inView ? "fade-up" : ""}`}
-        style={{ animationDelay: `${index * 120}ms`, "--accent": project.color, cursor: 'pointer' }}
-        onMouseEnter={() => setHovered(true)}
-        onMouseLeave={() => setHovered(false)}
-        onClick={() => setPopupOpen(true)}
-      >
-        <div className="project-top">
-          <span className="project-icon" style={{ color: project.color }}>{project.icon}</span>
-          <span className="project-year">{project.year}</span>
-        </div>
-        <h3 className="project-title">{project.title}</h3>
-        <p className="project-desc">{project.desc}</p>
-        <div className="project-tags">
-          {project.tags.map((t) => (
-            <span key={t} className="tag" style={{ borderColor: project.color + "44", color: project.color }}>
-              {t}
-            </span>
-          ))}
-        </div>
-        <div className={`project-links-overlay ${hovered ? "overlay-show" : ""}`}>
-          <span className="popup-hint-text" style={{ color: project.color }}>
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" style={{ marginRight: '0.4rem' }}>
-              <circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/>
-              <line x1="11" y1="8" x2="11" y2="14"/><line x1="8" y1="11" x2="14" y2="11"/>
-            </svg>
-            Klik untuk Detail
-          </span>
-        </div>
+    <div
+      ref={cardRef}
+      className="project-card"
+      style={{ "--accent": project.color, cursor: 'pointer' }}
+      onMouseEnter={() => setHovered(true)}
+      onMouseMove={handleMouseMove}
+      onMouseLeave={handleMouseLeave}
+      onClick={onOpen}
+    >
+      <div className="project-top">
+        <span className="project-icon" style={{ color: project.color }}>{project.icon}</span>
+        <span className="project-year">{project.year}</span>
       </div>
-      {popupOpen && <ProjectPopup project={project} onClose={() => setPopupOpen(false)} />}
-    </>
+      <h3 className="project-title">{project.title}</h3>
+      <p className="project-desc">{project.desc}</p>
+      <div className="project-tags">
+        {project.tags.map((t) => (
+          <span key={t} className="tag" style={{ borderColor: project.color + "44", color: project.color }}>
+            {t}
+          </span>
+        ))}
+      </div>
+      <div className={`project-links-overlay ${hovered ? "overlay-show" : ""}`}>
+        <span className="popup-hint-text" style={{ color: project.color }}>
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" style={{ marginRight: '0.4rem' }}>
+            <circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/>
+            <line x1="11" y1="8" x2="11" y2="14"/><line x1="8" y1="11" x2="14" y2="11"/>
+          </svg>
+          Klik untuk Detail
+        </span>
+      </div>
+    </div>
   );
 }
 
-function CertificateCard({ cert, index }) {
-  const [ref, inView] = useInView();
+function CertificateCard({ cert }) {
+  const cardRef = useRef(null);
   const [hovered, setHovered] = useState(false);
+
+  const handleMouseMove = (e) => {
+    const card = cardRef.current;
+    if (!card) return;
+    const rect = card.getBoundingClientRect();
+    const x = e.clientX - rect.left;
+    const y = e.clientY - rect.top;
+    const centerX = rect.width / 2;
+    const centerY = rect.height / 2;
+    const rotateX = ((y - centerY) / centerY) * -12;
+    const rotateY = ((x - centerX) / centerX) * 12;
+    gsap.to(card, {
+      rotateX,
+      rotateY,
+      transformPerspective: 1000,
+      ease: "power3.out",
+      duration: 0.3
+    });
+  };
+
+  const handleMouseLeave = () => {
+    const card = cardRef.current;
+    if (!card) return;
+    gsap.to(card, {
+      rotateX: 0,
+      rotateY: 0,
+      ease: "power3.out",
+      duration: 0.5
+    });
+    setHovered(false);
+  };
+
   return (
     <div
-      ref={ref}
-      className={`project-card ${inView ? "fade-up" : ""}`}
-      style={{ animationDelay: `${index * 120}ms`, "--accent": cert.color }}
+      ref={cardRef}
+      className="project-card"
+      style={{ "--accent": cert.color }}
       onMouseEnter={() => setHovered(true)}
-      onMouseLeave={() => setHovered(false)}
+      onMouseMove={handleMouseMove}
+      onMouseLeave={handleMouseLeave}
     >
       <div className="project-top">
         <span className="project-icon" style={{ color: cert.color }}>{cert.icon}</span>
@@ -347,6 +397,10 @@ export default function App() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const [formData, setFormData] = useState({ name: "", email: "", phone: "", message: "" });
+  const [activeProject, setActiveProject] = useState(null);
+
+  const cursorDotRef = useRef(null);
+  const cursorCircleRef = useRef(null);
 
   const MY_EMAIL = "varianarmi78@gmail.com";
   const WA_NUMBER = "6282190215227";
@@ -364,10 +418,229 @@ export default function App() {
     window.location.href = `mailto:${MY_EMAIL}?subject=${subject}&body=${body}`;
   };
 
+  const handleHeroMouseMove = (e) => {
+    const hero = document.getElementById("hero");
+    if (!hero) return;
+    const rect = hero.getBoundingClientRect();
+    const x = (e.clientX - rect.left) / rect.width - 0.5; // -0.5 to 0.5
+    const y = (e.clientY - rect.top) / rect.height - 0.5;
+    
+    gsap.to(".hero-visual", {
+      x: x * 35,
+      y: y * 35,
+      rotateY: -15 + x * 20,
+      rotateX: 5 - y * 20,
+      ease: "power2.out",
+      duration: 0.5
+    });
+  };
+
+  const handleHeroMouseLeave = () => {
+    gsap.to(".hero-visual", {
+      x: 0,
+      y: 0,
+      rotateY: -15,
+      rotateX: 5,
+      ease: "power2.out",
+      duration: 0.8
+    });
+  };
+
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 60);
     window.addEventListener("scroll", onScroll);
-    return () => window.removeEventListener("scroll", onScroll);
+
+    const ctx = gsap.context(() => {
+      // 1. Initial Hero entry animations
+      const tl = gsap.timeline({ defaults: { ease: "power4.out" } });
+
+      tl.to(".navbar", { opacity: 1, y: 0, duration: 1 })
+        .to(".hero-badge", { opacity: 1, y: 0, duration: 0.8 }, "-=0.6")
+        .to(".hero-name", { opacity: 1, y: 0, duration: 1 }, "-=0.6")
+        .to(".hero-typed", { opacity: 1, y: 0, duration: 0.8 }, "-=0.6")
+        .to(".hero-desc", { opacity: 1, y: 0, duration: 0.8 }, "-=0.6")
+        .to(".hero-actions button, .hero-actions a", { opacity: 1, y: 0, duration: 0.8, stagger: 0.15 }, "-=0.6")
+        .to(".code-window", { opacity: 1, x: 0, rotateY: -15, rotateX: 5, duration: 1.2 }, "-=1")
+        .to(".float-badge", { opacity: 1, scale: 1, duration: 0.8, stagger: 0.1 }, "-=0.8");
+
+      // 2. Floating badges looping animations
+      gsap.to(".code-window", {
+        y: "-=15",
+        rotateX: "+=2",
+        rotateY: "-=2",
+        duration: 4,
+        ease: "sine.inOut",
+        repeat: -1,
+        yoyo: true
+      });
+      gsap.to(".badge-1", { y: "-=12", duration: 3, ease: "sine.inOut", repeat: -1, yoyo: true });
+      gsap.to(".badge-2", { y: "+=15", duration: 3.5, ease: "sine.inOut", repeat: -1, yoyo: true });
+      gsap.to(".badge-3", { y: "-=10", duration: 2.8, ease: "sine.inOut", repeat: -1, yoyo: true });
+
+      // 3. Section Title & Line animations
+      const sections = document.querySelectorAll("section");
+      sections.forEach((sec) => {
+        const header = sec.querySelector(".section-header");
+        if (header) {
+          gsap.to(header.querySelector(".section-title"), {
+            opacity: 1,
+            x: 0,
+            duration: 0.8,
+            scrollTrigger: {
+              trigger: header,
+              start: "top 85%",
+              toggleActions: "play none none none"
+            }
+          });
+          gsap.to(header.querySelector(".section-line"), {
+            width: "100%",
+            duration: 1.2,
+            ease: "power2.out",
+            scrollTrigger: {
+              trigger: header,
+              start: "top 85%"
+            }
+          });
+        }
+      });
+
+      // 4. About Grid animations
+      gsap.to(".about-photo", {
+        opacity: 1,
+        x: 0,
+        scale: 1,
+        duration: 1.2,
+        scrollTrigger: {
+          trigger: ".about-grid",
+          start: "top 80%"
+        }
+      });
+      gsap.to(".about-text", {
+        opacity: 1,
+        x: 0,
+        duration: 1.2,
+        scrollTrigger: {
+          trigger: ".about-grid",
+          start: "top 80%"
+        }
+      });
+
+      // 5. Timeline scroll reveals
+      const timelineItems = document.querySelectorAll(".timeline-item");
+      timelineItems.forEach((item) => {
+        gsap.to(item, {
+          opacity: 1,
+          y: 0,
+          duration: 0.8,
+          scrollTrigger: {
+            trigger: item,
+            start: "top 85%"
+          }
+        });
+      });
+
+      // 6. Skills icons staggered entry
+      gsap.to(".skill-icon-item", {
+        opacity: 1,
+        y: 0,
+        scale: 1,
+        duration: 0.6,
+        stagger: 0.04,
+        ease: "back.out(1.5)",
+        scrollTrigger: {
+          trigger: ".skills-icon-grid",
+          start: "top 85%"
+        }
+      });
+
+      // 7. Projects/Certificates Grid staggered cards reveal
+      const grids = document.querySelectorAll(".projects-grid");
+      grids.forEach((grid) => {
+        const cards = grid.querySelectorAll(".project-card");
+        if (cards.length > 0) {
+          gsap.to(cards, {
+            opacity: 1,
+            y: 0,
+            duration: 0.8,
+            stagger: 0.1,
+            scrollTrigger: {
+              trigger: grid,
+              start: "top 85%"
+            }
+          });
+        }
+      });
+
+      // 8. Contact scroll reveals
+      gsap.to(".contact-info", {
+        opacity: 1,
+        x: 0,
+        duration: 1,
+        scrollTrigger: {
+          trigger: ".contact-grid",
+          start: "top 85%"
+        }
+      });
+      gsap.to(".contact-form", {
+        opacity: 1,
+        x: 0,
+        duration: 1,
+        scrollTrigger: {
+          trigger: ".contact-grid",
+          start: "top 85%"
+        }
+      });
+
+      // 9. Custom Cursor follower logic
+      const dot = cursorDotRef.current;
+      const circle = cursorCircleRef.current;
+      if (dot && circle) {
+        let mouseX = 0;
+        let mouseY = 0;
+        let circleX = 0;
+        let circleY = 0;
+
+        const onMouseMoveCursor = (e) => {
+          mouseX = e.clientX;
+          mouseY = e.clientY;
+          gsap.set(dot, { x: mouseX, y: mouseY });
+        };
+
+        window.addEventListener("mousemove", onMouseMoveCursor);
+
+        let activeAnimationFrame;
+        const tick = () => {
+          circleX += (mouseX - circleX) * 0.15;
+          circleY += (mouseY - circleY) * 0.15;
+          gsap.set(circle, { x: circleX, y: circleY });
+          activeAnimationFrame = requestAnimationFrame(tick);
+        };
+        activeAnimationFrame = requestAnimationFrame(tick);
+
+        const handleMouseOver = (e) => {
+          const target = e.target.closest("a, button, .project-card, .tool-chip, .social-chip, input, textarea, .skill-icon-item");
+          if (target) {
+            gsap.to(circle, { scale: 2.2, backgroundColor: "rgba(0, 255, 136, 0.1)", borderColor: "var(--accent-green)", duration: 0.3 });
+            gsap.to(dot, { scale: 1.5, backgroundColor: "var(--accent-cyan)", duration: 0.3 });
+          }
+        };
+        const handleMouseOut = (e) => {
+          const target = e.target.closest("a, button, .project-card, .tool-chip, .social-chip, input, textarea, .skill-icon-item");
+          if (target) {
+            gsap.to(circle, { scale: 1, backgroundColor: "transparent", borderColor: "rgba(0, 255, 136, 0.4)", duration: 0.3 });
+            gsap.to(dot, { scale: 1, backgroundColor: "var(--accent-green)", duration: 0.3 });
+          }
+        };
+
+        window.addEventListener("mouseover", handleMouseOver);
+        window.addEventListener("mouseout", handleMouseOut);
+      }
+    });
+
+    return () => {
+      window.removeEventListener("scroll", onScroll);
+      ctx.revert();
+    };
   }, []);
 
   const scrollTo = (id) => {
@@ -377,6 +650,10 @@ export default function App() {
 
   return (
     <div className="app">
+      {/* Custom Cursor */}
+      <div className="custom-cursor-dot" ref={cursorDotRef} />
+      <div className="custom-cursor-circle" ref={cursorCircleRef} />
+
       {/* Grid background */}
       <div className="grid-bg" />
       <div className="noise-overlay" />
@@ -412,7 +689,7 @@ export default function App() {
       </nav>
 
       {/* Hero */}
-      <section className="hero" id="hero">
+      <section className="hero" id="hero" onMouseMove={handleHeroMouseMove} onMouseLeave={handleHeroMouseLeave}>
         <div className="hero-content">
           <div className="hero-badge">
             <span className="dot-pulse" />
@@ -564,8 +841,8 @@ export default developer;`}</pre>
         <div className="section-inner">
           <SectionLabel label="" title="Keahlian" />
           <div className="skills-icon-grid">
-            {SKILLS.map((s, i) => (
-              <SkillIcon key={s.name} {...s} delay={i * 60} />
+            {SKILLS.map((s) => (
+              <SkillIcon key={s.name} {...s} />
             ))}
           </div>
         </div>
@@ -576,8 +853,8 @@ export default developer;`}</pre>
         <div className="section-inner">
           <SectionLabel label="" title="Pengalaman Projek" />
           <div className="projects-grid">
-            {PROJECTS.map((p, i) => (
-              <ProjectCard key={p.title} project={p} index={i} />
+            {PROJECTS.map((p) => (
+              <ProjectCard key={p.title} project={p} onOpen={() => setActiveProject(p)} />
             ))}
           </div>
         </div>
@@ -588,8 +865,8 @@ export default developer;`}</pre>
         <div className="section-inner">
           <SectionLabel label="" title="Sertifikat" />
           <div className="projects-grid">
-            {CERTIFICATES.map((c, i) => (
-              <CertificateCard key={c.title} cert={c} index={i} />
+            {CERTIFICATES.map((c) => (
+              <CertificateCard key={c.title} cert={c} />
             ))}
           </div>
         </div>
@@ -730,14 +1007,14 @@ export default developer;`}</pre>
           </div>
         </div>
       </footer>
+      {activeProject && <ProjectPopup project={activeProject} onClose={() => setActiveProject(null)} />}
     </div>
   );
 }
 
 function SectionLabel({ label, title }) {
-  const [ref, inView] = useInView();
   return (
-    <div ref={ref} className={`section-header ${inView ? "fade-up" : ""}`}>
+    <div className="section-header">
       <span className="section-num">{label}</span>
       <h2 className="section-title">{title}</h2>
       <div className="section-line" />

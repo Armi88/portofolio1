@@ -2350,3 +2350,112 @@ body {
     padding: 0 0.75rem;
   }
 }
+
+/* ═══════════════════════════════════════
+   GSAP & PREMIUM TRANSITIONS OVERRIDES
+═══════════════════════════════════════ */
+
+/* Reset opacities & disable CSS transition animations on GSAP targeted elements to avoid conflict */
+.navbar,
+.hero-badge,
+.hero-name,
+.hero-typed,
+.hero-desc,
+.hero-actions button,
+.hero-actions a,
+.hero-visual,
+.code-window,
+.float-badge,
+.skill-icon-item,
+.project-card,
+.timeline-item,
+.section-title,
+.section-line,
+.about-photo,
+.about-text,
+.contact-info,
+.contact-form {
+  animation: none !important;
+}
+
+/* Base starting hidden state for ScrollTriggered items to avoid flash. */
+.navbar,
+.hero-badge,
+.hero-name,
+.hero-typed,
+.hero-desc,
+.hero-actions button,
+.hero-actions a,
+.code-window,
+.float-badge,
+.skill-icon-item,
+.project-card,
+.timeline-item,
+.about-photo,
+.about-text,
+.contact-info,
+.contact-form {
+  opacity: 0;
+}
+
+.section-title {
+  opacity: 0;
+  transform: translateX(-50px);
+}
+
+.section-line {
+  width: 0;
+}
+
+/* Custom Cursor styling */
+.custom-cursor-dot {
+  width: 8px;
+  height: 8px;
+  background-color: var(--accent-green);
+  border-radius: 50%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+  z-index: 9999;
+  transition: width 0.2s, height 0.2s, background-color 0.2s;
+}
+
+.custom-cursor-circle {
+  width: 40px;
+  height: 40px;
+  border: 1.5px solid rgba(0, 255, 136, 0.4);
+  border-radius: 50%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+  z-index: 9998;
+  mix-blend-mode: difference;
+  transition: transform 0.1s ease-out, border-color 0.2s, background-color 0.2s;
+}
+
+/* Cards perspective for 3D tilt effects */
+.projects-grid, .skills-icon-grid {
+  perspective: 1200px;
+}
+
+.project-card {
+  transform-style: preserve-3d;
+  will-change: transform;
+  transition: box-shadow 0.3s ease;
+}
+
+.project-card:hover {
+  box-shadow: 0 20px 40px rgba(0, 255, 136, 0.1), 0 0 0 1px rgba(0, 255, 136, 0.15);
+}
+
+/* Responsive Custom Cursor */
+@media (max-width: 768px) {
+  .custom-cursor-dot,
+  .custom-cursor-circle {
+    display: none !important;
+  }
+}
